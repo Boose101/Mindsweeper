@@ -55,7 +55,7 @@ public class CellButton extends JButton implements MouseListener {
 
     private ImageIcon getBombIcon() {
         if (this.bombIcon == null) {
-            this.bombIcon = getIcon("resources/bomb.gif");
+            this.bombIcon = getIcon("resources/bomb.png");
         }
         return this.bombIcon;
     }
