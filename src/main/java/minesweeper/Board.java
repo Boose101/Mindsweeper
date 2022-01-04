@@ -9,6 +9,8 @@ public class Board
         LOSE,
         CONTINUE
     }
+    
+    public int numOfClicked = 0;
 
     public Board(int height, int width, BoardPanel boardPanel) {
         this.height = height;
@@ -86,7 +88,8 @@ public class Board
     }
 
     Result clickCell(int y, int x)
-    {
+    {   
+        numOfClicked++;
         Cell cell = matrix[y][x];
         if(cell.flagged()) {
             return Result.CONTINUE;
@@ -101,7 +104,7 @@ public class Board
             showArea(y, x);
         }
 
-        //int numOfClicked = 0;
+        
         //for(int i = 0; i < height; i++) {
         //    for(int j = 0; j < width; j++) {
         //        if(matrix[i][j].clicked()) {
