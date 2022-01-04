@@ -1,6 +1,4 @@
 import javax.swing.JFrame;
-import java.awt.Dimension;
-import java.awt.Toolkit;
 
 public class BoardFrame extends JFrame{
 
