@@ -101,14 +101,14 @@ public class Board
             showArea(y, x);
         }
 
-        \\int numOfClicked = 0;
-        \\for(int i = 0; i < height; i++) {
-        \\    for(int j = 0; j < width; j++) {
-        \\        if(matrix[i][j].clicked()) {
-        \\            numOfClicked++;
-        \\        }
-        \\    }
-        \\}
+        //int numOfClicked = 0;
+        //for(int i = 0; i < height; i++) {
+        //    for(int j = 0; j < width; j++) {
+        //        if(matrix[i][j].clicked()) {
+        //            numOfClicked++;
+        //        }
+        //    }
+        //}
 
         if(numOfClicked == totalSquares - numOfBombs) {
             return Result.WIN;
