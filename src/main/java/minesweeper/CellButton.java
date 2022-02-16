@@ -35,8 +35,6 @@ public class CellButton extends JButton implements MouseListener {
 
     public void mouseReleased(MouseEvent mouseEvent) {
         if (SwingUtilities.isLeftMouseButton(mouseEvent)) {
-            CellButton button = (CellButton)mouseEvent.getComponent();
-
             board.clickCell(this);
         }
         if (SwingUtilities.isMiddleMouseButton(mouseEvent)) {
