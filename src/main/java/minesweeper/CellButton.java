@@ -55,21 +55,35 @@ public class CellButton extends JButton implements MouseListener {
     public void mouseClicked(MouseEvent e) {
     }
 
-    private ImageIcon getBombIcon() {
+    ImageIcon getBombIcon() {
         if (this.bombIcon == null) {
             this.bombIcon = getIcon("bomb.png");
         }
         return this.bombIcon;
     }
 
-    private ImageIcon getFlagIcon() {
+    ImageIcon getFlagIcon() {
         if (this.flagIcon == null) {
             this.flagIcon = getIcon("flag.png");
         }
         return this.flagIcon;
     }
 
-    private ImageIcon getIcon(String file) {
+    ImageIcon getPartyIcon() {
+        if (this.flagIcon == null) {
+            this.flagIcon = getIcon("party.png");
+        }
+        return this.flagIcon;
+    }
+
+    ImageIcon getNoIcon() {
+        if (this.flagIcon == null) {
+            this.flagIcon = getIcon("party.png");
+        }
+        return this.flagIcon;
+    }
+
+    ImageIcon getIcon(String file) {
         try {
             BufferedImage  img = ImageIO.read(getClass().getResource(file));
             Image newimg = img.getScaledInstance( getWidth(), getHeight(),  java.awt.Image.SCALE_SMOOTH ) ;
@@ -99,8 +113,9 @@ public class CellButton extends JButton implements MouseListener {
             stayPressed();
 
             if(cell.getType() == Cell.Type.Bomb) {
-                setIcon(getBombIcon());
-            } else {
+                    setIcon(getBombIcon());
+            } 
+            else {
                 if (cell.getType() == Cell.Type.Num) {
                     this.setText(Integer.toString(((NumCell)cell).getNum()));
                 }
@@ -119,8 +134,7 @@ public class CellButton extends JButton implements MouseListener {
                 }
             } else if (cell.flagged()) {
                 setIcon(getFlagIcon());
-            } else {
-            }
+            } 
         }
     }
 
