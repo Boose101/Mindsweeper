@@ -1,3 +1,4 @@
+import java.awt.Button;
 import java.util.Random;
 
 
@@ -160,7 +161,28 @@ public class Board
                             matrix[i][j].setClicked(true);
                             showArea(i, j);
                         } 
-                        //else if(matrix[i][j].getType() == Cell.Type.)
+                        
+                    }
+                }
+            }
+        }
+    }
+
+    void endShow(int y, int x) {
+        for (int i = y - 1; i < y + 2; i++) { // height
+            for (int j = x - 1; j < x + 2; j++) { // width
+                if(i >= 0 && i < height && j >= 0 && j < width) {
+                    if (matrix[i][j].clicked() == false) {
+                        if (matrix[i][j].getType() == Cell.Type.Num) {
+                            matrix[i][j].setClicked(true);
+                        }
+                        else if (matrix[i][j].getType() == Cell.Type.Empty && !matrix[i][j].clicked()) {
+                            matrix[i][j].setClicked(true);
+                            showArea(i, j);
+                        } 
+                        else if(matrix[i][j].flagged()){
+                            CellButton.setIcon(CellButton.getPartyIcon());
+                        }
                         //Need to create new cell type to be able to run showArexa to connect than with party.png to be able to show which cells where flagged correcty
                     }
                 }
