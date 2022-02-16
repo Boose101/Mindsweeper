@@ -1,9 +1,13 @@
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.SwingUtilities;
 
 // TODO:
 //  1) explain try,

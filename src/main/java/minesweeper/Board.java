@@ -159,7 +159,9 @@ public class Board
                         else if (matrix[i][j].getType() == Cell.Type.Empty && !matrix[i][j].clicked()) {
                             matrix[i][j].setClicked(true);
                             showArea(i, j);
-                        }
+                        } 
+                        //else if(matrix[i][j].getType() == Cell.Type.)
+                        //Need to create new cell type to be able to run showArexa to connect than with party.png to be able to show which cells where flagged correcty
                     }
                 }
             }
