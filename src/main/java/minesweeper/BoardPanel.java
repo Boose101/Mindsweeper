@@ -1,6 +1,8 @@
-import javax.swing.JPanel;
+import java.awt.Dimension;
+import java.awt.GridLayout;
+
 import javax.swing.JOptionPane;
-import java.awt.*;
+import javax.swing.JPanel;
 
 
 public class BoardPanel extends JPanel {

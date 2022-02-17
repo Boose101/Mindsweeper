@@ -74,7 +74,7 @@ public class CellButton extends JButton implements MouseListener {
 
     ImageIcon getNoIcon() {
         if (this.flagIcon == null) {
-            this.flagIcon = getIcon("party.png");
+            this.flagIcon = getIcon("no.png");
         }
         return this.flagIcon;
     }
@@ -107,9 +107,18 @@ public class CellButton extends JButton implements MouseListener {
 
         if(showAll) {
             stayPressed();
+            //System.out.println("yeet");
 
-            if(cell.getType() == Cell.Type.Bomb) {
+            if (cell.getType() == Cell.Type.Bomb){
+                // System.out.println(cell.flagged());
+                if(cell.flagged()){
+                    setIcon(getPartyIcon());
+                    System.out.println(cell);
+                }
+                else{
                     setIcon(getBombIcon());
+                    
+                }
             } 
             else {
                 if (cell.getType() == Cell.Type.Num) {
@@ -117,7 +126,7 @@ public class CellButton extends JButton implements MouseListener {
                 }
             }
         }
-        else {
+        else { 
             if (cell.clicked()) {
                 stayPressed();
 
