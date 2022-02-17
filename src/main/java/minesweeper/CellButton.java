@@ -9,11 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.SwingUtilities;
 
-// TODO:
-//  1) explain try,
-//  2) explain protected,
-//  3) explain implement and extend
-// 4) override
+
 public class CellButton extends JButton implements MouseListener {
 
     public CellButton(BoardPanel board, Cell cell)
