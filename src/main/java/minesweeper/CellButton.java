@@ -102,48 +102,41 @@ public class CellButton extends JButton implements MouseListener {
     {
         setIcon(null);
 
-        if(showAll) {
+        //Showall true, called in BoardPanel
+        if(showAll){
             stayPressed();
-            //System.out.println("yeet");
 
-            if (cell.getType() == Cell.Type.Bomb){
+            if(cell.getType() == Cell.Type.Bomb){
                 if(cell.flagged()){
+                    setIcon(null);
                     setIcon(getPartyIcon());
-                    System.out.println("2");
-                }
-                else{
+                }else{
                     setIcon(getBombIcon());
                 }
-            } 
-            else {
-
-                if (cell.getType() == Cell.Type.Num) {
-                    if(cell.flagged()){
-                        setIcon(getNoIcon());
-                    }
-                    else{
-                        this.setText(Integer.toString(((NumCell)cell).getNum()));
-                    }
-                }
+            }else if(cell.flagged()){
+                setIcon(getNoIcon());
+            }else if(cell.getType() == Cell.Type.Num){
+                this.setText(Integer.toString(((NumCell)cell).getNum()));
             }
         }
-        else { 
-            if (cell.clicked()) {
+        
+        //Showall false, 
+        else{
+            if(cell.clicked()){
                 stayPressed();
-
-                if (cell.getType() == Cell.Type.Bomb) {
+                if(cell.getType() == Cell.Type.Bomb){
                     setIcon(getBombIcon());
-                } else {
-                    if (cell.getType() == Cell.Type.Num) {
+                }else{
+                    if(cell.getType() == Cell.Type.Num){
                         this.setText(Integer.toString(((NumCell)cell).getNum()));
                     }
                 }
-            } 
-            else if (cell.flagged()) {
+            } else if(cell.flagged()) {
                 setIcon(getFlagIcon());
-            } 
+            }
         }
     }
+    
 
     private ImageIcon bombIcon;
     private ImageIcon flagIcon;
