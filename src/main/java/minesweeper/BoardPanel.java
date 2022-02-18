@@ -54,7 +54,8 @@ public class BoardPanel extends JPanel {
         draw(true);
 
         Object[] options = {"Yes, please", "No, thanks"};
-        int n = JOptionPane.showOptionDialog(this,
+        int n = JOptionPane.showOptionDialog(
+                this,
                 "You " + result + "!!!, Play again?",
                 "You " + result,
                 JOptionPane.YES_NO_OPTION,
@@ -115,7 +116,7 @@ public class BoardPanel extends JPanel {
     }
 
     void draw(boolean showAll) {
-        // System.out.println("BoardPanel::draw: " + showAll);
+        System.out.println("BoardPanel::draw: " + showAll);
         for (int i = 0; i < height; ++i)
         {
             for (int j = 0; j < width; ++j)

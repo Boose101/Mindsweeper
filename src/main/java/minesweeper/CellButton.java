@@ -12,6 +12,8 @@ import javax.swing.SwingUtilities;
 
 public class CellButton extends JButton implements MouseListener {
 
+
+
     public CellButton(BoardPanel board, Cell cell)
     {
         this.cell = cell;
@@ -98,11 +100,6 @@ public class CellButton extends JButton implements MouseListener {
 
     public void draw(Boolean showAll)
     {
-//        System.out.println("CellButton::draw: [" + cell.getY() + ", " + cell.getX() + "]: "
-//            + "Type: " + cell.getType()
-//                +  ", flagged = " + cell.flagged()
-//                +  ", clicked = " + cell.clicked()
-//        );
         setIcon(null);
 
         if(showAll) {
@@ -110,19 +107,23 @@ public class CellButton extends JButton implements MouseListener {
             //System.out.println("yeet");
 
             if (cell.getType() == Cell.Type.Bomb){
-                // System.out.println(cell.flagged());
                 if(cell.flagged()){
                     setIcon(getPartyIcon());
-                    System.out.println(cell);
+                    System.out.println("2");
                 }
                 else{
                     setIcon(getBombIcon());
-                    
                 }
             } 
             else {
+
                 if (cell.getType() == Cell.Type.Num) {
-                    this.setText(Integer.toString(((NumCell)cell).getNum()));
+                    if(cell.flagged()){
+                        setIcon(getNoIcon());
+                    }
+                    else{
+                        this.setText(Integer.toString(((NumCell)cell).getNum()));
+                    }
                 }
             }
         }
@@ -137,7 +138,8 @@ public class CellButton extends JButton implements MouseListener {
                         this.setText(Integer.toString(((NumCell)cell).getNum()));
                     }
                 }
-            } else if (cell.flagged()) {
+            } 
+            else if (cell.flagged()) {
                 setIcon(getFlagIcon());
             } 
         }
