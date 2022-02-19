@@ -65,6 +65,7 @@ public class BoardPanel extends JPanel {
                 options[0]);
 
         if (n == 1) {
+            System.out.println("=========== End ============");
             System.exit(0);
         }
         else
