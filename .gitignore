@@ -30,3 +30,7 @@ replay_pid*
 # JAVA end
 manifest.txt
 Test.jar
+
+# Info store
+
+*.DS_Store
