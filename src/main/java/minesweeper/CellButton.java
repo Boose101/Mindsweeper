@@ -1,16 +1,18 @@
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 
-// TODO:
-//  1) explain try,
-//  2) explain protected,
-//  3) explain implement and extend
-// 4) override
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.SwingUtilities;
+
+
 public class CellButton extends JButton implements MouseListener {
+
+
 
     public CellButton(BoardPanel board, Cell cell)
     {
@@ -31,8 +33,6 @@ public class CellButton extends JButton implements MouseListener {
 
     public void mouseReleased(MouseEvent mouseEvent) {
         if (SwingUtilities.isLeftMouseButton(mouseEvent)) {
-            CellButton button = (CellButton)mouseEvent.getComponent();
-
             board.clickCell(this);
         }
         if (SwingUtilities.isMiddleMouseButton(mouseEvent)) {
@@ -53,21 +53,36 @@ public class CellButton extends JButton implements MouseListener {
     public void mouseClicked(MouseEvent e) {
     }
 
-    private ImageIcon getBombIcon() {
+    ImageIcon getBombIcon() {
         if (this.bombIcon == null) {
             this.bombIcon = getIcon("bomb.png");
         }
         return this.bombIcon;
     }
 
-    private ImageIcon getFlagIcon() {
+    ImageIcon getFlagIcon() {
         if (this.flagIcon == null) {
             this.flagIcon = getIcon("flag.png");
         }
+        System.out.println("f");
         return this.flagIcon;
     }
 
-    private ImageIcon getIcon(String file) {
+    ImageIcon getPartyIcon() {
+        if (this.partyIcon == null) {
+            this.partyIcon = getIcon("party.png");
+        }
+        return this.partyIcon;
+    }
+
+    ImageIcon getNoIcon() {
+        if (this.noIcon == null) {
+            this.noIcon = getIcon("no.png");
+        }
+        return this.noIcon;
+    }
+
+    ImageIcon getIcon(String file) {
         try {
             BufferedImage  img = ImageIO.read(getClass().getResource(file));
             Image newimg = img.getScaledInstance( getWidth(), getHeight(),  java.awt.Image.SCALE_SMOOTH ) ;
@@ -86,44 +101,47 @@ public class CellButton extends JButton implements MouseListener {
 
     public void draw(Boolean showAll)
     {
-//        System.out.println("CellButton::draw: [" + cell.getY() + ", " + cell.getX() + "]: "
-//            + "Type: " + cell.getType()
-//                +  ", flagged = " + cell.flagged()
-//                +  ", clicked = " + cell.clicked()
-//        );
         setIcon(null);
 
-        if(showAll) {
+        if(showAll){
             stayPressed();
-
-            if(cell.getType() == Cell.Type.Bomb) {
-                setIcon(getBombIcon());
-            } else {
-                if (cell.getType() == Cell.Type.Num) {
-                    this.setText(Integer.toString(((NumCell)cell).getNum()));
+            if(cell.getType() == Cell.Type.Bomb){
+                if(cell.flagged()){
+                    setIcon(null);
+                    setIcon(getPartyIcon());
+                    System.out.println("p");
+                }else{
+                    setIcon(getBombIcon());
                 }
+            }else if(cell.flagged()){
+                setIcon(getNoIcon());
+            }else if(cell.getType() == Cell.Type.Num){
+                this.setText(Integer.toString(((NumCell)cell).getNum()));
             }
         }
-        else {
-            if (cell.clicked()) {
+        
+        //Showall false, 
+        else{
+            if(cell.clicked()){
                 stayPressed();
-
-                if (cell.getType() == Cell.Type.Bomb) {
+                if(cell.getType() == Cell.Type.Bomb){
                     setIcon(getBombIcon());
-                } else {
-                    if (cell.getType() == Cell.Type.Num) {
+                }else{
+                    if(cell.getType() == Cell.Type.Num){
                         this.setText(Integer.toString(((NumCell)cell).getNum()));
                     }
                 }
-            } else if (cell.flagged()) {
+            } else if(cell.flagged()) {
                 setIcon(getFlagIcon());
-            } else {
             }
         }
     }
+    
 
     private ImageIcon bombIcon;
     private ImageIcon flagIcon;
+    private ImageIcon noIcon;
+    private ImageIcon partyIcon;
 
     private Cell cell;
     private BoardPanel board;

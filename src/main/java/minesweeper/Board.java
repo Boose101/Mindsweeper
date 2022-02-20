@@ -104,15 +104,6 @@ public class Board
             showArea(y, x);
         }
 
-        
-        //for(int i = 0; i < height; i++) {
-        //    for(int j = 0; j < width; j++) {
-        //        if(matrix[i][j].clicked()) {
-        //            numOfClicked++;
-        //        }
-        //    }
-        //}
-
         if(numOfClicked == totalSquares - numOfBombs) {
             return Result.WIN;
         }
@@ -159,12 +150,14 @@ public class Board
                         else if (matrix[i][j].getType() == Cell.Type.Empty && !matrix[i][j].clicked()) {
                             matrix[i][j].setClicked(true);
                             showArea(i, j);
-                        }
+                        } 
+                        
                     }
                 }
             }
         }
     }
+
 
     private int height;
     private int width;
