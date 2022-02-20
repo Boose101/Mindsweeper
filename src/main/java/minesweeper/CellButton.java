@@ -64,21 +64,22 @@ public class CellButton extends JButton implements MouseListener {
         if (this.flagIcon == null) {
             this.flagIcon = getIcon("flag.png");
         }
+        System.out.println("f");
         return this.flagIcon;
     }
 
     ImageIcon getPartyIcon() {
-        if (this.flagIcon == null) {
-            this.flagIcon = getIcon("party.png");
+        if (this.partyIcon == null) {
+            this.partyIcon = getIcon("party.png");
         }
-        return this.flagIcon;
+        return this.partyIcon;
     }
 
     ImageIcon getNoIcon() {
-        if (this.flagIcon == null) {
-            this.flagIcon = getIcon("no.png");
+        if (this.noIcon == null) {
+            this.noIcon = getIcon("no.png");
         }
-        return this.flagIcon;
+        return this.noIcon;
     }
 
     ImageIcon getIcon(String file) {
@@ -102,14 +103,13 @@ public class CellButton extends JButton implements MouseListener {
     {
         setIcon(null);
 
-        //Showall true, called in BoardPanel
         if(showAll){
             stayPressed();
-
             if(cell.getType() == Cell.Type.Bomb){
                 if(cell.flagged()){
                     setIcon(null);
                     setIcon(getPartyIcon());
+                    System.out.println("p");
                 }else{
                     setIcon(getBombIcon());
                 }
@@ -140,6 +140,8 @@ public class CellButton extends JButton implements MouseListener {
 
     private ImageIcon bombIcon;
     private ImageIcon flagIcon;
+    private ImageIcon noIcon;
+    private ImageIcon partyIcon;
 
     private Cell cell;
     private BoardPanel board;
