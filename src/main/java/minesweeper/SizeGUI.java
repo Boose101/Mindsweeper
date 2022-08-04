@@ -16,7 +16,7 @@ public class SizeGUI {
    }
 
     public static void createWindow() {    
-      JFrame frame = new JFrame("Swing Tester");
+      JFrame frame = new JFrame("Size");
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       createUI(frame);
       frame.setSize(560, 200);      
@@ -24,7 +24,7 @@ public class SizeGUI {
       frame.setVisible(true);
    }
 
-   private static void createUI(final JFrame frame){  
+   private static int createUI(final JFrame frame){  
       JPanel panel = new JPanel();
       LayoutManager layout = new FlowLayout();  
       panel.setLayout(layout);       
@@ -36,17 +36,19 @@ public class SizeGUI {
          public void actionPerformed(ActionEvent e) {
             String result = (String)JOptionPane.showInputDialog(
                frame,
-               "Select one of the color", 
-               "Swing Tester",            
+               "Enter the size:", 
+               "Size",            
                JOptionPane.PLAIN_MESSAGE,
                null,            
                null, 
-               "Red"
+               "20"
             );
             if(result != null && result.length() > 0){
                label.setText("You selected:" + result);
+               return result;
             }else {
                label.setText("None selected");
+               return 20;
 
             }
          }
