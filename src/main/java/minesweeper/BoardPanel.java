@@ -7,10 +7,10 @@ import javax.swing.JPanel;
 
 public class BoardPanel extends JPanel {
 
-    public BoardPanel(BoardFrame frame)
+    public BoardPanel(BoardFrame frame, int size)
     {
         this.frame = frame;
-        width = height = 20;
+        width = height = size;
         int panelSize = 1000;
         panelDimension = new Dimension(panelSize, panelSize);
         buttonDimension = new Dimension(panelSize/width, panelSize/height);
