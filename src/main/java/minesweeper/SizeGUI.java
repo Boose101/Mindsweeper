@@ -19,7 +19,7 @@ public class SizeGUI {
       JFrame frame = new JFrame("Size");
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       createUI(frame);
-      frame.setSize(560, 200);      
+      frame.setSize(100, 200);      
       frame.setLocationRelativeTo(null);  
       frame.setVisible(true);
    }
@@ -34,7 +34,7 @@ public class SizeGUI {
       button.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent e) {
-            int result = (int) JOptionPane.showInputDialog(
+            String result = (String) JOptionPane.showInputDialog(
                frame,
                "Enter the size:", 
                "Size",            
@@ -43,11 +43,12 @@ public class SizeGUI {
                null, 
                "20"
             );
-            if(result > 0){
+            System.out.println(result);
+            if(result != null){
                label.setText("You selected:" + result);
             }else {
                label.setText("None selected");
-               result = 20;
+               result = "20";
 
             }
          }
