@@ -34,7 +34,7 @@ public class SizeGUI {
       button.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent e) {
-            String result = (String)JOptionPane.showInputDialog(
+            int result = (int) JOptionPane.showInputDialog(
                frame,
                "Enter the size:", 
                "Size",            
@@ -43,12 +43,11 @@ public class SizeGUI {
                null, 
                "20"
             );
-            if(result != null && result.length() > 0){
+            if(result > 0){
                label.setText("You selected:" + result);
-               return result;
             }else {
                label.setText("None selected");
-               return 20;
+               result = 20;
 
             }
          }
@@ -56,6 +55,7 @@ public class SizeGUI {
 
       panel.add(button);
       panel.add(label);
-      frame.getContentPane().add(panel, BorderLayout.CENTER);    
+      frame.getContentPane().add(panel, BorderLayout.CENTER); 
+      return 20; 
    }  
 } 
