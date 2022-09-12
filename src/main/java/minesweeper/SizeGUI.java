@@ -31,7 +31,11 @@ public class SizeGUI {
 public static void main(String[] args) {
       createWindow();
    }
-
+   	public static int sizeReturn(String r){
+		createWindow();
+		int result = Integer.parseInt(r);
+		return result;
+	}
     public static void createWindow() {    
       JFrame frame = new JFrame("Size");
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -56,7 +60,7 @@ public static void main(String[] args) {
       frame.getContentPane().add(panel, BorderLayout.CENTER);  
    }  
 
-   	public static String createContent(JLabel label, JFrame frame){
+   	public static void createContent(JLabel label, JFrame frame){
 
 		String result = (String)JOptionPane.showInputDialog(
                frame,
@@ -69,10 +73,10 @@ public static void main(String[] args) {
             );
             
             if(result != null && result.length() > 0){
-			   return result;
+				sizeReturn(result);
+
             }else {
                label.setText("None selected");
-			   return "20";
             }
 
 		
